@@ -15,7 +15,7 @@ const isVisible = (node) => {
 
 const readStoredNavbarWarningHidden = () => {
   try {
-    const stored = window.sessionStorage.getItem(NAVBAR_WARNING_STORAGE_KEY);
+    const stored = window.localStorage.getItem(NAVBAR_WARNING_STORAGE_KEY);
     return stored === "1" || stored === "true";
   } catch {
     return false;
@@ -41,7 +41,7 @@ const setNavbarWarningHidden = (nextHidden, { persist = true } = {}) => {
 
   if (persist && !forceVisible) {
     try {
-      window.sessionStorage.setItem(NAVBAR_WARNING_STORAGE_KEY, hidden ? "1" : "0");
+      window.localStorage.setItem(NAVBAR_WARNING_STORAGE_KEY, hidden ? "1" : "0");
     } catch {
       // Ignore storage failures and still honor the current UI state.
     }
